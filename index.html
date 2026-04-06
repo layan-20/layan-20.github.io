@@ -3,666 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Layan Jabr — Software Engineer & Web Designer</title>
-<meta name="description" content="Software Engineer & Web Designer in Charlotte, NC. WordPress, Elementor, SEO, React, Node.js.">
-<meta name="theme-color" content="#0a0a0a">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=Cabinet+Grotesk:wght@300;400;500;700&family=Playfair+Display:ital,wght@1,400;0,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<title>Layan | Software Engineer</title>
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a0a0a;--surface:#111;--surface2:#181818;--border:#222;--text:#f0ece4;--muted:#888880;--faint:#3a3a38;--gold:#c9a96e;--gold2:#e8c98a;--green:#4ade80;--serif:'Fraunces',Georgia,serif;--sans:'Cabinet Grotesk',system-ui,sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;cursor:none}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
-.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,110,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,width .2s,height .2s}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;border-bottom:1px solid rgba(255,255,255,0.04)}
-nav::after{content:'';position:absolute;inset:0;background:rgba(10,10,10,0.88);backdrop-filter:blur(20px);z-index:-1}
-.nav-logo{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--text);text-decoration:none}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{color:var(--bg)!important;background:var(--gold)!important;padding:.5rem 1.25rem!important}
-.nav-cta:hover{background:var(--gold2)!important}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px}
-.hamburger span{width:22px;height:1px;background:var(--text);display:block}
-.mobile-menu{display:none;flex-direction:column;position:fixed;inset:0;background:var(--bg);z-index:99;padding:6rem 3rem 3rem;gap:2rem}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:var(--serif);font-size:2.5rem;font-style:italic;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
-.mobile-menu a:hover{color:var(--gold)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 4rem;position:relative;overflow:hidden;padding-top:80px}
-.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);font-family:var(--serif);font-size:clamp(120px,18vw,220px);font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.04);white-space:nowrap;pointer-events:none;letter-spacing:-.03em;line-height:1;z-index:0;user-select:none}
-.hero-content{position:relative;z-index:1;max-width:1200px}
-.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;opacity:0;animation:fadeUp .9s .1s forwards}
-.hero-eyebrow-line{width:40px;height:1px;background:var(--gold)}
-.hero-eyebrow span{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
-.hero-name{font-family:var(--serif);font-size:clamp(4rem,9vw,8.5rem);font-weight:300;line-height:.95;letter-spacing:-.02em;margin-bottom:1rem;opacity:0;animation:fadeUp .9s .2s forwards}
-.hero-name em{font-style:italic;color:var(--gold)}
-.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .4s forwards}
-.hero-desc{font-size:1rem;line-height:1.75;color:var(--muted);max-width:420px}
-.hero-desc strong{color:var(--text);font-weight:500}
-.hero-stats{display:flex;gap:2.5rem}
-.hero-stat-num{font-family:var(--serif);font-size:2.25rem;font-weight:300;color:var(--text);line-height:1}
-.hero-stat-num span{color:var(--gold)}
-.hero-stat-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
-.scroll-hint{position:absolute;bottom:2rem;right:3rem;display:flex;align-items:center;gap:.75rem;opacity:0;animation:fadeUp .9s .6s forwards}
-.scroll-hint span{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sp 2s ease-in-out infinite}
-@keyframes sp{0%,100%{opacity:.3}50%{opacity:1}}
-.status-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 3rem;display:flex;gap:3rem;align-items:center;flex-wrap:wrap}
-.status-item{display:flex;align-items:center;gap:.6rem;font-size:.72rem;color:var(--muted)}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.status-label{color:var(--text);font-weight:500}
-.featured-label{max-width:1300px;margin:0 auto;padding:5rem 3rem 0;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.featured-title-wrap{display:flex;align-items:baseline;gap:1.5rem}
-.section-num{font-size:.65rem;letter-spacing:.15em;color:var(--gold);font-weight:500}
-.section-title{font-family:var(--serif);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:300;font-style:italic}
-.featured-count{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.projects-wrap{max-width:1300px;margin:0 auto;padding:2rem 3rem 2rem}
-.projects-list{border-top:1px solid var(--border)}
-.project-item{border-bottom:1px solid var(--border)}
-.project-header{display:grid;grid-template-columns:60px 1fr auto auto;align-items:center;padding:2rem 1rem 2rem 0;gap:1.5rem;cursor:none;transition:background .2s;position:relative}
-.project-header:hover .proj-title-main{color:var(--gold)}
-.project-header:hover .proj-arrow-icon{color:var(--gold);transform:rotate(45deg)}
-.proj-index{font-size:.65rem;letter-spacing:.12em;color:var(--faint);font-weight:500}
-.proj-left{display:flex;flex-direction:column;gap:.5rem}
-.proj-title-main{font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;line-height:1.1;color:var(--text);transition:color .2s}
-.proj-title-main em{font-style:italic;color:var(--gold)}
-.proj-tag-row{display:flex;gap:.4rem;flex-wrap:wrap}
-.proj-tag{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid var(--faint);color:var(--muted);border-radius:20px}
-.proj-result-inline{font-size:.8rem;color:var(--muted);text-align:right;line-height:1.5}
-.proj-result-inline strong{display:block;font-family:var(--serif);font-size:1.4rem;color:var(--text);line-height:1}
-.proj-arrow-icon{font-size:1.5rem;color:var(--faint);transition:color .2s,transform .3s;width:30px;text-align:center}
-.project-item.open .proj-arrow-icon{color:var(--gold);transform:rotate(45deg)}
-.click-hint{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);position:absolute;bottom:.5rem;left:60px;opacity:0;transition:opacity .3s}
-.project-header:hover .click-hint{opacity:1}
-.project-detail{display:none;padding:0 0 3rem 60px;border-top:1px solid var(--border)}
-.project-item.open .project-detail{display:block}
-.detail-inner{padding-top:2.5rem}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.detail-problem-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
-.detail-problem-text{font-size:.95rem;line-height:1.8;color:var(--muted);margin-bottom:2rem}
-.detail-steps{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.detail-step{background:var(--surface2);padding:1.25rem 1.5rem;display:flex;gap:1.25rem}
-.detail-step-n{font-size:.65rem;color:var(--gold);font-weight:500;min-width:20px;padding-top:2px}
-.detail-step-body{font-size:.85rem;line-height:1.7;color:var(--muted)}
-.detail-step-body strong{color:var(--text);font-weight:500}
-.detail-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:1.5rem}
-.detail-metric{background:var(--surface2);padding:1.5rem}
-.detail-metric-num{font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;margin-bottom:.3rem}
-.detail-metric-label{font-size:.72rem;color:var(--muted);line-height:1.5}
-.detail-tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
-.detail-tool{font-size:.7rem;padding:.3rem .75rem;border:1px solid var(--faint);color:var(--muted);border-radius:20px}
-.live-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:.6rem 1.25rem;text-decoration:none;margin-top:1.5rem;transition:all .2s}
-.live-link:hover{background:var(--gold);color:var(--bg)}
-.live-link svg{width:14px;height:14px}
-.ba-wrap{margin-bottom:1.5rem}
-.ba-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
-.ba-container{position:relative;overflow:hidden;border:1px solid var(--border);user-select:none;height:240px}
-.ba-before-side,.ba-after-side{position:absolute;inset:0;overflow:hidden}
-.ba-after-side{clip-path:inset(0 50% 0 0);z-index:2}
-.ba-handle{position:absolute;top:0;bottom:0;z-index:3;width:2px;background:var(--gold);left:50%;transform:translateX(-50%);cursor:col-resize}
-.ba-handle::after{content:'◀▶';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--bg);letter-spacing:-1px;line-height:30px;text-align:center}
-.ba-tag{position:absolute;top:10px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;z-index:4;font-weight:500}
-.ba-tag.b{left:10px;background:rgba(0,0,0,.7);color:var(--muted)}
-.ba-tag.a{right:10px;background:var(--gold);color:var(--bg)}
-.mock-b{background:#1a1a1a;width:100%;height:100%;padding:10px;display:flex;flex-direction:column;gap:5px}
-.mock-a{background:#0a0a0a;width:100%;height:100%;display:flex;flex-direction:column}
-.mb-nav{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:5px}
-.mb-nav span{background:#333;color:#666;font-size:7px;padding:2px 5px}
-.mb-old-hero{background:#2a2a2a;height:70px;display:flex;align-items:center;justify-content:center;color:#555;font-size:8px;margin-bottom:5px}
-.mb-blk{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:5px}
-.mb-b{height:30px;background:#222}
-.mb-lines{display:flex;flex-direction:column;gap:3px}
-.mb-line{height:4px;background:#2a2a2a;border-radius:2px}
-.mb-line.s{width:55%}
-.ma-nav{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #1e1e1e}
-.ma-logo{font-size:10px;font-weight:600;color:#f0ece4}
-.ma-cta{font-size:7px;background:var(--gold);color:#0a0a0a;padding:3px 8px;border-radius:20px}
-.ma-body{padding:12px;flex:1}
-.ma-ey{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.ma-h{font-family:var(--serif);font-size:16px;line-height:1.2;color:#f0ece4;margin-bottom:6px;font-style:italic}
-.ma-cards{display:grid;grid-template-columns:1fr 1fr;gap:5px}
-.ma-card{background:#181818;border:1px solid #222;border-radius:2px;padding:6px}
-.ma-ci{height:25px;background:#222;margin-bottom:4px}
-.ma-cl{height:3px;background:#2a2a2a;margin-bottom:2px;border-radius:2px}
-.ma-cl.s{width:60%}
-.ma-stats{display:flex;gap:10px;padding:8px 12px;border-top:1px solid #1e1e1e}
-.ma-st strong{display:block;font-size:10px;color:#f0ece4}
-.ma-st span{font-size:7px;color:#666}
-.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-bottom:1.5rem}
-.lh-card{background:var(--surface2);padding:1.25rem;text-align:center}
-.lh-ring{width:72px;height:72px;margin:0 auto .6rem;position:relative}
-.lh-ring svg{width:72px;height:72px;transform:rotate(-90deg)}
-.lh-track{fill:none;stroke:var(--faint);stroke-width:5}
-.lh-fill{fill:none;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)}
-.lh-num-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.lh-num{font-family:var(--serif);font-size:1.2rem;color:var(--text);line-height:1}
-.lh-label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.tabs-wrap{display:flex;gap:1px;background:var(--border);margin-bottom:1px}
-.tab-btn{flex:1;padding:.75rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:var(--surface2);border:none;color:var(--muted);cursor:none;font-family:var(--sans);transition:all .2s}
-.tab-btn.active{background:var(--gold);color:var(--bg);font-weight:500}
-.tab-btn:hover:not(.active){background:var(--surface);color:var(--text)}
-.tab-panel{display:none}.tab-panel.active{display:block}
-.tab-content{background:var(--surface2);padding:1.5rem;border:1px solid var(--border)}
-.ann-row{display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--border)}
-.ann-row:last-child{border-bottom:none}
-.ann-pill{font-size:.62rem;font-weight:500;padding:.2rem .6rem;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
-.ann-text{font-size:.85rem;color:var(--muted);line-height:1.6}
-.lux-mini{background:#0c0c0a;border:1px solid #1e1e1a;margin-bottom:1.5rem;overflow:hidden}
-.lx-nav{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid #1e1e1a}
-.lx-logo{font-family:'Playfair Display',serif;font-size:11px;color:#e8e0cc;letter-spacing:.06em}
-.lx-links{display:flex;gap:12px}
-.lx-links span{font-size:7px;color:#5a5a52;letter-spacing:.1em;text-transform:uppercase}
-.lx-hero{padding:24px 14px 18px;text-align:center;border-bottom:1px solid #1e1e1a}
-.lx-ey{font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:#8a7a5a;margin-bottom:8px}
-.lx-h{font-family:'Playfair Display',serif;font-size:18px;color:#e8e0cc;font-weight:400;line-height:1.25;margin-bottom:8px}
-.lx-h em{font-style:italic;color:#c8b890}
-.lx-sub{font-size:8px;color:#5a5a52;line-height:1.6;max-width:280px;margin:0 auto 12px}
-.lx-cta{display:inline-block;font-size:7px;letter-spacing:.15em;text-transform:uppercase;color:#0c0c0a;background:#c8b890;padding:5px 14px}
-.lx-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.lx-item{padding:10px;border-right:1px solid #1e1e1a;border-top:1px solid #1e1e1a}
-.lx-item:last-child{border-right:none}
-.lx-img{height:40px;background:#181818;margin-bottom:5px}
-.lx-il{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#5a5a52;margin-bottom:2px}
-.lx-in{font-family:'Playfair Display',serif;font-size:9px;color:#c8b890}
-.st-mini{background:#f0f0ff;border:1px solid #e0e0f0;overflow:hidden;margin-bottom:1.5rem}
-.st-nav2{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:#fff;border-bottom:1px solid #e0e0f0}
-.st-logo2{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:#1a1a2e;letter-spacing:-.02em}
-.st-logo2 span{color:#4f3ff0}
-.st-pill2{font-size:8px;background:#4f3ff0;color:#fff;padding:3px 9px;border-radius:20px}
-.st-hero2{padding:16px 14px}
-.st-badge2{display:inline-block;font-size:8px;background:#ede9ff;color:#4f3ff0;padding:3px 8px;border-radius:20px;font-weight:500;margin-bottom:8px}
-.st-h2{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:#1a1a2e;line-height:1.2;letter-spacing:-.03em;margin-bottom:6px}
-.st-h2 span{color:#4f3ff0}
-.st-sub2{font-size:8px;color:#555;line-height:1.6;margin-bottom:10px;max-width:300px}
-.st-btns2{display:flex;gap:6px;margin-bottom:12px}
-.st-bp{font-size:8px;background:#4f3ff0;color:#fff;padding:4px 10px;border-radius:5px}
-.st-bs{font-size:8px;background:#fff;color:#1a1a2e;padding:4px 10px;border-radius:5px;border:1px solid #e0e0f0}
-.st-cards2{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.st-card2{background:#fff;border-radius:5px;padding:8px;border:1px solid #e8e8f8}
-.st-icon2{width:20px;height:20px;background:#ede9ff;border-radius:4px;margin-bottom:4px;display:flex;align-items:center;justify-content:center}
-.st-dot2{width:7px;height:7px;background:#4f3ff0;border-radius:50%}
-.st-ct2{font-size:9px;font-weight:500;color:#1a1a2e;margin-bottom:2px}
-.st-cb2{font-size:7px;color:#888;line-height:1.4}
-.loc-mini{background:#faf7f2;border:1px solid #e8e0d4;overflow:hidden;margin-bottom:1.5rem}
-.loc-nav2{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:#2c1a0e}
-.loc-logo2{font-family:var(--serif);font-size:11px;color:#f5e6c8;font-style:italic}
-.loc-links2{display:flex;gap:10px}
-.loc-links2 span{font-size:7px;color:#a08060;letter-spacing:.08em}
-.loc-hero2{display:grid;grid-template-columns:1.2fr 0.8fr}
-.loc-left2{background:#2c1a0e;padding:16px 14px}
-.loc-ey2{font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:#c87941;margin-bottom:6px}
-.loc-h2{font-family:var(--serif);font-size:15px;color:#f5e6c8;line-height:1.2;margin-bottom:8px;font-style:italic}
-.loc-h2 em{color:#c87941}
-.loc-cta2{display:inline-block;font-size:8px;background:#c87941;color:#fff;padding:4px 10px;border-radius:2px}
-.loc-right2{background:#3d2512;display:flex;align-items:center;justify-content:center;font-size:2.5rem;opacity:.3}
-.loc-info2{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-top:2px solid #c87941}
-.loc-ii2{padding:8px 10px;border-right:1px solid #ede8e0}
-.loc-ii2:last-child{border-right:none}
-.loc-il2{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#a08060;margin-bottom:2px}
-.loc-iv2{font-size:10px;font-weight:500;color:#2c1a0e}
-.rb-wrap{max-width:1300px;margin:0 auto;padding:0 3rem 6rem}
-.rb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.rb-item{background:var(--surface);padding:1.75rem 2rem}
-.rb-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--text);line-height:1;margin-bottom:.3rem}
-.rb-num span{color:var(--gold)}
-.rb-label{font-size:.7rem;color:var(--muted);line-height:1.5}
-.skills-section{border-top:1px solid var(--border);padding:5rem 3rem}
-.skills-inner{max-width:1300px;margin:0 auto}
-.skills-section-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:3rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.globe-wrap{position:relative;width:100%;aspect-ratio:1;max-width:500px;margin:0 auto}
-#skillsCanvas{width:100%!important;height:100%!important}
-.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
-.sk-cell{background:var(--surface2);padding:1.25rem}
-.sk-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.sk-tags{font-size:.82rem;color:var(--muted);line-height:1.7}
-.about-section{border-top:1px solid var(--border);padding:5rem 3rem}
-.about-inner{max-width:1300px;margin:0 auto}
-.about-section-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:3rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.about-role{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.about-quote{font-family:var(--serif);font-size:1.4rem;font-style:italic;color:var(--text);line-height:1.5;border-left:2px solid var(--gold);padding-left:1.5rem;margin-bottom:2rem}
-.about-text p{font-size:.95rem;line-height:1.85;color:var(--muted);margin-bottom:1.25rem}
-.about-text p:last-child{margin-bottom:0}
-.about-text strong{color:var(--text);font-weight:500}
-.workflow-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:2rem 0}
-.wp{font-size:.72rem;padding:.4rem 1rem;border:1px solid var(--faint);color:var(--muted);border-radius:20px;position:relative;transition:all .2s}
-.wp::after{content:'→';position:absolute;right:-16px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:.7rem}
-.wp:last-child::after{display:none}
-.wp:hover{border-color:var(--gold);color:var(--gold)}
-.traits-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
-.trait{background:var(--surface2);padding:1.5rem}
-.trait-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
-.trait-text{font-size:.88rem;line-height:1.7;color:var(--muted)}
-.contact-section{background:var(--surface);border-top:1px solid var(--border);padding:7rem 3rem}
-.contact-inner{max-width:900px;margin:0 auto;text-align:center}
-.contact-eyebrow{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-.contact-headline{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;font-style:italic;color:var(--text);line-height:1.1;margin-bottom:1.5rem}
-.contact-headline em{color:var(--gold)}
-.contact-desc{font-size:1rem;color:var(--muted);line-height:1.75;max-width:520px;margin:0 auto 3rem}
-.contact-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
-.cbtn{display:inline-block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;transition:all .2s}
-.cbtn-p{background:var(--gold);color:var(--bg)}
-.cbtn-p:hover{background:var(--gold2)}
-.cbtn-o{border:1px solid var(--faint);color:var(--muted)}
-.cbtn-o:hover{border-color:var(--gold);color:var(--gold)}
-.footer-marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;background:var(--surface)}
-.footer-track{display:flex;gap:2rem;width:max-content;animation:marquee 30s linear infinite}
-.footer-item{font-family:var(--serif);font-size:1.5rem;font-style:italic;font-weight:300;color:var(--faint);white-space:nowrap}
-.footer-item span{color:var(--border)}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-footer{background:var(--surface);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
-footer span,footer a{font-size:.72rem;color:var(--faint);text-decoration:none}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}
-  .hero{padding:5rem 1.5rem 3rem}.hero-bg-text{font-size:80px}
-  .hero-stats{flex-wrap:wrap;gap:1.5rem}
-  .status-bar{padding:.9rem 1.5rem;gap:1.5rem}
-  .featured-label{padding:3rem 1.5rem 0}.projects-wrap{padding:2rem 1.5rem}
-  .project-header{grid-template-columns:40px 1fr auto;gap:1rem}.proj-result-inline{display:none}
-  .project-detail{padding:0 0 2rem 40px}
-  .detail-grid{grid-template-columns:1fr;gap:2rem}.detail-metrics{grid-template-columns:1fr 1fr}
-  .lh-grid{grid-template-columns:1fr 1fr}.rb-wrap{padding:0 1.5rem 3rem}.rb-grid{grid-template-columns:1fr 1fr}
-  .skills-section,.about-section{padding:3rem 1.5rem}
-  .skills-layout,.about-layout{grid-template-columns:1fr;gap:3rem}
-  .contact-section{padding:4rem 1.5rem}
-  footer{padding:1.25rem 1.5rem;flex-direction:column;gap:.5rem;text-align:center}
-  .loc-hero2{grid-template-columns:1fr}.loc-right2{display:none}
-  body{cursor:auto}.cursor,.cursor-ring{display:none}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0d0d0d;
+  color: #fff;
 }
-@media(max-width:600px){.hero-name{font-size:3rem}.hero-bottom{flex-direction:column}.detail-metrics,.rb-grid{grid-template-columns:1fr}}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 20px 80px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.hero p {
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* SECTIONS */
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ABOUT */
+#about h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#about p {
+  max-width: 700px;
+  margin: 10px auto;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.project-card {
+  padding: 25px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,240,255,0.4);
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.project-card p {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #00f0ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* SKILLS (globe-inspired feel) */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.skills-container span {
+  padding: 10px 16px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.06);
+  transition: 0.3s;
+}
+
+.skills-container span:hover {
+  transform: scale(1.1);
+  background: rgba(0,240,255,0.2);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.5;
+}
 </style>
 </head>
+
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#work" onclick="closeMobile()">Work</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-  <a href="https://github.com/layan-20" target="_blank">GitHub</a>
-</div>
-<nav>
-  <a href="#" class="nav-logo">Layan Jabr</a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="https://github.com/layan-20" target="_blank">GitHub</a></li>
-    <li><a href="#contact" class="nav-cta">Hire me</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
-</nav>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-bg-text">LAYAN</div>
-  <div class="hero-content">
-    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>Software Engineer & Web Designer — Charlotte, NC</span></div>
-    <h1 class="hero-name">Sites that<br>look sharp,<br><em>perform sharper.</em></h1>
-    <div class="hero-bottom">
-      <p class="hero-desc">I'm <strong>Layan Jabr</strong> — I build WordPress websites that turn visitors into leads. Fast. Clean. Built to rank on Google and convert from the first click.</p>
-      <div class="hero-stats">
-        <div><div class="hero-stat-num">25<span>%</span></div><div class="hero-stat-label">Avg. engagement lift</div></div>
-        <div><div class="hero-stat-num">98</div><div class="hero-stat-label">Lighthouse score</div></div>
-        <div><div class="hero-stat-num">3<span>×</span></div><div class="hero-stat-label">More leads</div></div>
-      </div>
+  <h1>Layan</h1>
+  <p>Software Engineer</p>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+
+  <h3>Software Engineer</h3>
+
+  <p>
+    I believe in a centered design approach where simplicity, clarity, and purpose come together.
+  </p>
+
+  <p>
+    I turn ideas into real digital experiences — from idea, planning, and execution — using modern technologies and AI to move faster and build smarter.
+  </p>
+
+  <p>
+    My focus is creating solutions that are not only visually appealing, but also functional, scalable, and understandable for both technical and non-technical users.
+  </p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Featured Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>
+        Designed and developed a modern portfolio website to showcase projects, skills, and professional identity with a clean and user-focused experience.
+      </p>
+      <a href="https://layan-20.github.io/" target="_blank">View Live →</a>
     </div>
+
+    <div class="project-card">
+      <h3>Interactive Web Project</h3>
+      <p>
+        Built an interactive front-end project focused on user experience, responsiveness, and clean UI design using modern JavaScript and CSS techniques.
+      </p>
+      <a href="#" target="_blank">View Live →</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Coming Project</h3>
+      <p>
+        Currently working on a new project that focuses on solving real-world problems with simple, effective, and scalable solutions.
+      </p>
+      <a href="#">Coming Soon</a>
+    </div>
+
   </div>
-  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
-</div>
-<div class="status-bar">
-  <div class="status-item"><div class="status-dot"></div><span class="status-label">Open to opportunities</span></div>
-  <div class="status-item">📍 <span class="status-label">Charlotte, NC</span> — Hybrid / In-office</div>
-  <div class="status-item">🎓 <span class="status-label">BSc Computer Science</span> · GPA 3.7</div>
-  <div class="status-item">⚡ <span class="status-label">WordPress · Elementor · SEO · React · Figma</span></div>
-</div>
-<div class="featured-label reveal" id="work">
-  <div class="featured-title-wrap"><span class="section-num">01</span><h2 class="section-title">Featured projects</h2></div>
-  <span class="featured-count">04 projects</span>
-</div>
-<div class="projects-wrap">
-  <div class="projects-list reveal">
-    <div class="project-item" id="p1">
-      <div class="project-header" onclick="toggleProject('p1')">
-        <span class="proj-index">01</span>
-        <div class="proj-left">
-          <h3 class="proj-title-main">From invisible to <em>unforgettable.</em></h3>
-          <div class="proj-tag-row"><span class="proj-tag">WordPress</span><span class="proj-tag">Elementor</span><span class="proj-tag">SEO</span><span class="proj-tag">Before / After</span><span class="proj-tag">Real Estate</span></div>
-          <span class="click-hint">Click to explore →</span>
-        </div>
-        <div class="proj-result-inline"><strong>+67%</strong>organic traffic</div>
-        <div class="proj-arrow-icon">+</div>
-      </div>
-      <div class="project-detail">
-        <div class="detail-inner">
-          <div class="detail-grid">
-            <div>
-              <div class="detail-problem-label">The challenge</div>
-              <p class="detail-problem-text">Harlow & Co. Realty had been in business 8 years but their website looked like 2009 — 7-item nav, broken on mobile, 7.8s load time, zero SEO. Every day they were invisible on Google while competitors took their leads.</p>
-              <div class="ba-wrap">
-                <div class="ba-label">Drag to compare</div>
-                <div class="ba-container" id="ba1">
-                  <div class="ba-before-side"><div class="mock-b"><div class="mb-nav"><span>Home</span><span>About</span><span>Listings</span><span>Team</span><span>Blog</span><span>FAQ</span><span>Contact</span></div><div class="mb-old-hero">WELCOME TO HARLOW REALTY</div><div class="mb-blk"><div class="mb-b"></div><div class="mb-b"></div><div class="mb-b"></div></div><div class="mb-lines"><div class="mb-line"></div><div class="mb-line"></div><div class="mb-line s"></div></div></div></div>
-                  <div class="ba-after-side"><div class="mock-a"><div class="ma-nav"><span class="ma-logo">Harlow & Co.</span><span class="ma-cta">Book a call</span></div><div class="ma-body"><div class="ma-ey">Charlotte Real Estate</div><div class="ma-h">Find your home in Charlotte.</div><div class="ma-cards"><div class="ma-card"><div class="ma-ci"></div><div class="ma-cl"></div><div class="ma-cl s"></div></div><div class="ma-card"><div class="ma-ci"></div><div class="ma-cl"></div><div class="ma-cl s"></div></div></div></div><div class="ma-stats"><div class="ma-st"><strong>142</strong><span>Listings</span></div><div class="ma-st"><strong>98</strong><span>Score</span></div><div class="ma-st"><strong>4.9★</strong><span>Google</span></div></div></div></div>
-                  <div class="ba-handle" id="ba1h"></div><div class="ba-tag b">Before</div><div class="ba-tag a">After</div>
-                </div>
-              </div>
-              <div class="detail-tools"><span class="detail-tool">WordPress</span><span class="detail-tool">Elementor</span><span class="detail-tool">Yoast SEO</span><span class="detail-tool">WPForms</span><span class="detail-tool">WP Rocket</span><span class="detail-tool">Figma</span><span class="detail-tool">Adobe Photoshop</span><span class="detail-tool">Claude AI</span></div>
-              <a href="https://layan-20.github.io" target="_blank" class="live-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View live project</a>
-            </div>
-            <div>
-              <div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-num">+67%</div><div class="detail-metric-label">organic traffic in 30 days</div></div><div class="detail-metric"><div class="detail-metric-num">98</div><div class="detail-metric-label">Lighthouse score</div></div><div class="detail-metric"><div class="detail-metric-num">3×</div><div class="detail-metric-label">more leads per week</div></div></div>
-              <div class="detail-steps">
-                <div class="detail-step"><span class="detail-step-n">01</span><span class="detail-step-body"><strong>WordPress + Elementor rebuild</strong> — stripped nav from 7 to 4 items, designed a hero with a single clear CTA, and built visual hierarchy that guides visitors straight to contact.</span></div>
-                <div class="detail-step"><span class="detail-step-n">02</span><span class="detail-step-body"><strong>Mobile-first responsive design</strong> — original site was completely broken on phones. Rebuilt every section, tested across 6 device sizes.</span></div>
-                <div class="detail-step"><span class="detail-step-n">03</span><span class="detail-step-body"><strong>Full SEO implementation</strong> — Yoast SEO setup, meta titles & descriptions for every page, alt text on all images, correct H1→H3 heading structure throughout.</span></div>
-                <div class="detail-step"><span class="detail-step-n">04</span><span class="detail-step-body"><strong>Performance optimization</strong> — compressed all images to WebP, configured WP Rocket caching, removed 4 bloated plugins. Load time: 7.2s → 1.4s.</span></div>
-                <div class="detail-step"><span class="detail-step-n">05</span><span class="detail-step-body"><strong>Lead capture & CRM integration</strong> — WPForms set up with automated email routing so every enquiry lands with the right agent within seconds.</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="project-item" id="p2">
-      <div class="project-header" onclick="toggleProject('p2')">
-        <span class="proj-index">02</span>
-        <div class="proj-left">
-          <h3 class="proj-title-main">Speed is a <em>design decision.</em></h3>
-          <div class="proj-tag-row"><span class="proj-tag">WordPress</span><span class="proj-tag">Performance</span><span class="proj-tag">SEO</span><span class="proj-tag">Lighthouse</span><span class="proj-tag">Fitness</span></div>
-          <span class="click-hint">Click to explore →</span>
-        </div>
-        <div class="proj-result-inline"><strong>34→98</strong>Lighthouse score</div>
-        <div class="proj-arrow-icon">+</div>
-      </div>
-      <div class="project-detail">
-        <div class="detail-inner">
-          <div class="detail-grid">
-            <div>
-              <div class="detail-problem-label">The challenge</div>
-              <p class="detail-problem-text">Peak Form Fitness had a 34 Lighthouse score and 7.8s load time. 14 unused plugins, 6.2 MB of uncompressed images, zero SEO structure. Most mobile visitors left before the page loaded. They were on page 3 of Google.</p>
-              <div class="lh-grid">
-                <div class="lh-card"><div class="lh-ring"><svg viewBox="0 0 72 72"><circle class="lh-track" cx="36" cy="36" r="30"/><circle class="lh-fill" id="lr1" cx="36" cy="36" r="30" stroke="#4ade80" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg><div class="lh-num-wrap"><span class="lh-num" id="ln1">0</span></div></div><div class="lh-label">Performance</div></div>
-                <div class="lh-card"><div class="lh-ring"><svg viewBox="0 0 72 72"><circle class="lh-track" cx="36" cy="36" r="30"/><circle class="lh-fill" id="lr2" cx="36" cy="36" r="30" stroke="#4ade80" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg><div class="lh-num-wrap"><span class="lh-num" id="ln2">0</span></div></div><div class="lh-label">SEO</div></div>
-                <div class="lh-card"><div class="lh-ring"><svg viewBox="0 0 72 72"><circle class="lh-track" cx="36" cy="36" r="30"/><circle class="lh-fill" id="lr3" cx="36" cy="36" r="30" stroke="#4ade80" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg><div class="lh-num-wrap"><span class="lh-num" id="ln3">0</span></div></div><div class="lh-label">Accessibility</div></div>
-                <div class="lh-card"><div class="lh-ring"><svg viewBox="0 0 72 72"><circle class="lh-track" cx="36" cy="36" r="30"/><circle class="lh-fill" id="lr4" cx="36" cy="36" r="30" stroke="#4ade80" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg><div class="lh-num-wrap"><span class="lh-num" id="ln4">0</span></div></div><div class="lh-label">Best Practices</div></div>
-              </div>
-              <div class="detail-tools"><span class="detail-tool">WordPress</span><span class="detail-tool">WP Rocket</span><span class="detail-tool">Yoast SEO</span><span class="detail-tool">Smush WebP</span><span class="detail-tool">Lighthouse</span><span class="detail-tool">Search Console</span></div>
-              <a href="https://layan-20.github.io" target="_blank" class="live-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View live project</a>
-            </div>
-            <div>
-              <div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-num">81%</div><div class="detail-metric-label">faster — 7.8s to 1.4s</div></div><div class="detail-metric"><div class="detail-metric-num">34→98</div><div class="detail-metric-label">Lighthouse score</div></div><div class="detail-metric"><div class="detail-metric-num">Page 1</div><div class="detail-metric-label">Google in 30 days</div></div></div>
-              <div class="detail-steps">
-                <div class="detail-step"><span class="detail-step-n">01</span><span class="detail-step-body"><strong>Full Lighthouse audit</strong> — identified 14 unused plugins, uncompressed images, render-blocking scripts, zero caching.</span></div>
-                <div class="detail-step"><span class="detail-step-n">02</span><span class="detail-step-body"><strong>Image optimization</strong> — bulk-converted 47 images to WebP via Smush. Page weight: 6.2 MB → 890 KB.</span></div>
-                <div class="detail-step"><span class="detail-step-n">03</span><span class="detail-step-body"><strong>WP Rocket setup</strong> — full-page cache, browser cache, GZIP, lazy loading. Load time: 7.8s → 1.4s.</span></div>
-                <div class="detail-step"><span class="detail-step-n">04</span><span class="detail-step-body"><strong>Plugin cleanup</strong> — removed 14 unused, replaced 3 heavy ones with lightweight alternatives.</span></div>
-                <div class="detail-step"><span class="detail-step-n">05</span><span class="detail-step-body"><strong>SEO + Search Console</strong> — Yoast configured, meta content for all pages, alt text on every image, XML sitemap submitted. Page 3 → Page 1 in 30 days.</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="project-item" id="p3">
-      <div class="project-header" onclick="toggleProject('p3')">
-        <span class="proj-index">03</span>
-        <div class="proj-left">
-          <h3 class="proj-title-main">One designer. <em>Three voices.</em></h3>
-          <div class="proj-tag-row"><span class="proj-tag">UI / UX</span><span class="proj-tag">Figma</span><span class="proj-tag">WordPress</span><span class="proj-tag">Elementor</span><span class="proj-tag">3 Industries</span></div>
-          <span class="click-hint">Click to explore →</span>
-        </div>
-        <div class="proj-result-inline"><strong>96+</strong>Lighthouse all pages</div>
-        <div class="proj-arrow-icon">+</div>
-      </div>
-      <div class="project-detail">
-        <div class="detail-inner">
-          <p style="font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;max-width:650px">Great designers adapt — they speak the language of each client's world. Three landing pages, three completely different aesthetics, all built in WordPress and Elementor, all scoring 96+ on Lighthouse.</p>
-          <div class="tabs-wrap">
-            <button class="tab-btn active" onclick="switchTab3(event,'t-luxury')">Luxury brand</button>
-            <button class="tab-btn" onclick="switchTab3(event,'t-startup')">Bold startup</button>
-            <button class="tab-btn" onclick="switchTab3(event,'t-local')">Local business</button>
-          </div>
-          <div class="tab-panel active" id="t-luxury"><div class="tab-content"><div class="lux-mini"><div class="lx-nav"><span class="lx-logo">MAISON VOSS</span><div class="lx-links"><span>Collections</span><span>Atelier</span><span>Stores</span></div></div><div class="lx-hero"><div class="lx-ey">Autumn — Winter 2025</div><div class="lx-h">Crafted for those who<br><em>need no introduction.</em></div><div class="lx-sub">Twelve pieces. Boundless restraint. Each garment produced in a single artisan studio in Lyon.</div><div class="lx-cta">Explore the collection</div></div><div class="lx-grid"><div class="lx-item"><div class="lx-img"></div><div class="lx-il">Outerwear</div><div class="lx-in">Le Manteau Noir</div></div><div class="lx-item"><div class="lx-img"></div><div class="lx-il">Eveningwear</div><div class="lx-in">La Robe Voss</div></div><div class="lx-item"><div class="lx-img"></div><div class="lx-il">Accessories</div><div class="lx-in">La Pochette</div></div></div></div><div class="ann-row"><span class="ann-pill" style="background:#f5f0e8;color:#8a7a5a">Luxury</span><span class="ann-text">Dark background, gold tones, Playfair Display italic — exclusivity signaled before a word is read.</span></div><div class="ann-row"><span class="ann-pill" style="background:#f5f0e8;color:#8a7a5a">Luxury</span><span class="ann-text">Zero rounded corners, sparse nav, generous whitespace — restraint is the luxury signal.</span></div></div></div>
-          <div class="tab-panel" id="t-startup"><div class="tab-content"><div class="st-mini"><div class="st-nav2"><span class="st-logo2">Ve<span>lo</span></span><span class="st-pill2">Get early access →</span></div><div class="st-hero2"><div class="st-badge2">Now in beta — join 4,200 teams</div><div class="st-h2">Ship faster.<br><span>Without the chaos.</span></div><div class="st-sub2">Velo syncs your team, tools, and timelines — so nothing falls through the cracks.</div><div class="st-btns2"><div class="st-bp">Start free trial</div><div class="st-bs">Watch demo</div></div><div class="st-cards2"><div class="st-card2"><div class="st-icon2"><div class="st-dot2"></div></div><div class="st-ct2">Real-time sync</div><div class="st-cb2">Every change, instantly.</div></div><div class="st-card2"><div class="st-icon2"><div class="st-dot2"></div></div><div class="st-ct2">Smart deadlines</div><div class="st-cb2">AI flags blockers early.</div></div><div class="st-card2"><div class="st-icon2"><div class="st-dot2"></div></div><div class="st-ct2">One dashboard</div><div class="st-cb2">Jira, Slack, GitHub unified.</div></div></div></div></div><div class="ann-row"><span class="ann-pill" style="background:#ede9ff;color:#4f3ff0">Startup</span><span class="ann-text">Electric purple, Space Grotesk, tight letter-spacing — modern, technical, fast-moving.</span></div><div class="ann-row"><span class="ann-pill" style="background:#ede9ff;color:#4f3ff0">Startup</span><span class="ann-text">Social proof, dual CTAs, feature cards above the fold — pure conversion architecture.</span></div></div></div>
-          <div class="tab-panel" id="t-local"><div class="tab-content"><div class="loc-mini"><div class="loc-nav2"><span class="loc-logo2">Oak & Ember</span><div class="loc-links2"><span>Menu</span><span>Hours</span><span>Catering</span></div></div><div class="loc-hero2"><div class="loc-left2"><div class="loc-ey2">Charlotte's backyard BBQ since 2011</div><div class="loc-h2">Slow fire.<br><em>Real smoke.</em><br>No shortcuts.</div><div class="loc-cta2">See today's menu</div></div><div class="loc-right2">🔥</div></div><div class="loc-info2"><div class="loc-ii2"><div class="loc-il2">Hours today</div><div class="loc-iv2">11am – 9pm</div></div><div class="loc-ii2"><div class="loc-il2">Location</div><div class="loc-iv2">NoDa, Charlotte</div></div><div class="loc-ii2"><div class="loc-il2">Catering</div><div class="loc-iv2">Book now →</div></div></div></div><div class="ann-row"><span class="ann-pill" style="background:#fdf0e8;color:#c87941">Local</span><span class="ann-text">Warm browns, serif italic, split hero — rooted in place, not corporate.</span></div><div class="ann-row"><span class="ann-pill" style="background:#fdf0e8;color:#c87941">Local</span><span class="ann-text">Hours, location, catering CTA above the fold — local customers need practical info instantly.</span></div></div></div>
-          <a href="https://layan-20.github.io" target="_blank" class="live-link" style="margin-top:1.5rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View live project</a>
-        </div>
-      </div>
-    </div>
-    <div class="project-item" id="p4">
-      <div class="project-header" onclick="toggleProject('p4')">
-        <span class="proj-index">04</span>
-        <div class="proj-left">
-          <h3 class="proj-title-main">Built for scale. <em>Shipped on time.</em></h3>
-          <div class="proj-tag-row"><span class="proj-tag">Full-Stack</span><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">API Integration</span><span class="proj-tag">AI-Augmented</span></div>
-          <span class="click-hint">Click to explore →</span>
-        </div>
-        <div class="proj-result-inline"><strong>$5K</strong>saved / year</div>
-        <div class="proj-arrow-icon">+</div>
-      </div>
-      <div class="project-detail">
-        <div class="detail-inner">
-          <div class="detail-grid">
-            <div>
-              <div class="detail-problem-label">The challenge</div>
-              <p class="detail-problem-text">A production platform with slow API responses, expensive database queries, and frontend bottlenecks — all while maintaining velocity across agile sprints. The team needed someone who could improve performance without slowing down delivery.</p>
-              <div class="detail-tools"><span class="detail-tool">React</span><span class="detail-tool">Node.js</span><span class="detail-tool">RESTful APIs</span><span class="detail-tool">SQL / NoSQL</span><span class="detail-tool">AWS</span><span class="detail-tool">Docker</span><span class="detail-tool">Git / GitHub</span><span class="detail-tool">CI/CD</span><span class="detail-tool">Claude AI</span><span class="detail-tool">GitHub Copilot</span><span class="detail-tool">Cursor</span></div>
-              <a href="https://github.com/layan-20" target="_blank" class="live-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View on GitHub</a>
-            </div>
-            <div>
-              <div class="detail-metrics"><div class="detail-metric"><div class="detail-metric-num">-20%</div><div class="detail-metric-label">page load time across projects</div></div><div class="detail-metric"><div class="detail-metric-num">$5K</div><div class="detail-metric-label">saved annually via DB optimization</div></div><div class="detail-metric"><div class="detail-metric-num">0</div><div class="detail-metric-label">critical bugs at release</div></div></div>
-              <div class="detail-steps">
-                <div class="detail-step"><span class="detail-step-n">01</span><span class="detail-step-body"><strong>API optimization</strong> — refactored RESTful endpoints, reduced payload sizes, implemented response caching. Load time reduced 20%+ across multiple projects.</span></div>
-                <div class="detail-step"><span class="detail-step-n">02</span><span class="detail-step-body"><strong>Database optimization</strong> — rewrote expensive queries, added strategic indexes. Saved $2,000–$5,000/year in compute costs.</span></div>
-                <div class="detail-step"><span class="detail-step-n">03</span><span class="detail-step-body"><strong>AI-augmented development</strong> — integrated Claude AI, Cursor, and GitHub Copilot to accelerate code generation, debug faster, and maintain code quality at speed without cutting corners.</span></div>
-                <div class="detail-step"><span class="detail-step-n">04</span><span class="detail-step-body"><strong>Frontend improvements</strong> — rebuilt client-facing components for accessibility and performance, increasing engagement by 25%.</span></div>
-                <div class="detail-step"><span class="detail-step-n">05</span><span class="detail-step-body"><strong>Cross-functional delivery</strong> — worked with QA and marketing teams across agile sprints. Every release was production-ready with zero critical bugs.</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+
+  <div class="skills-container">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>React</span>
+    <span>Git</span>
+    <span>UI/UX</span>
   </div>
-</div>
-<div class="rb-wrap reveal">
-  <div class="rb-grid">
-    <div class="rb-item"><div class="rb-num">2<span>+</span></div><div class="rb-label">Years building production-ready web products</div></div>
-    <div class="rb-item"><div class="rb-num">98</div><div class="rb-label">Peak Google Lighthouse performance score</div></div>
-    <div class="rb-item"><div class="rb-num">25<span>%</span></div><div class="rb-label">Average user engagement improvement</div></div>
-    <div class="rb-item"><div class="rb-num">3<span>×</span></div><div class="rb-label">Lead volume increase for real estate client</div></div>
-  </div>
-</div>
-<div class="skills-section" id="skills">
-  <div class="skills-inner">
-    <div class="skills-section-header reveal"><span class="section-num">02</span><h2 class="section-title">Skills & craft</h2></div>
-    <div class="skills-layout">
-      <div class="reveal">
-        <p style="font-size:1.05rem;line-height:1.85;color:var(--muted);margin-bottom:2rem">I believe in a <strong style="color:var(--text);font-weight:500">user-centered design approach</strong>, ensuring that every project I work on is tailored to meet the specific needs of its users — technically sound, visually sharp, and built for real results.</p>
-        <p style="font-size:.9rem;line-height:1.8;color:var(--muted);margin-bottom:2rem">From pixel-perfect Elementor layouts to optimized Node.js APIs, I move fluidly between design and engineering — which means I can talk to clients, collaborate with developers, and ship production-ready work without handoff gaps.</p>
-        <div class="sk-grid">
-          <div class="sk-cell"><div class="sk-label">Design & Web</div><div class="sk-tags">WordPress · Elementor · Figma · Adobe Suite · Canva · HTML/CSS · GHL</div></div>
-          <div class="sk-cell"><div class="sk-label">Engineering</div><div class="sk-tags">React · Node.js · APIs · AWS · Docker · SQL · CI/CD · Git</div></div>
-          <div class="sk-cell"><div class="sk-label">SEO & Performance</div><div class="sk-tags">Yoast · WP Rocket · Lighthouse · Search Console · WebP</div></div>
-          <div class="sk-cell"><div class="sk-label">AI Tools</div><div class="sk-tags">Claude AI · GitHub Copilot · Cursor</div></div>
-        </div>
-      </div>
-      <div class="globe-wrap reveal"><canvas id="skillsCanvas"></canvas></div>
-    </div>
-  </div>
-</div>
-<div class="about-section" id="about">
-  <div class="about-inner">
-    <div class="about-section-header reveal"><span class="section-num">03</span><h2 class="section-title">About me</h2></div>
-    <div class="about-layout">
-      <div class="reveal">
-        <div class="about-role">Software Engineer</div>
-        <p class="about-quote">"I believe in a user-centered design approach — every project I touch is tailored to meet the specific needs of its users."</p>
-        <div class="about-text">
-          <p>I'm <strong>Layan Jabr</strong> — a Software Engineer and Web Designer based in Charlotte, NC. My background spans both sides of the stack, which means I don't just make things look good. I understand why they work, and I fix them when they don't.</p>
-          <p>I approach every project through a lens of <strong>efficiency and precision</strong>. I don't chase trends — I ask why something works, then build it to last. Whether it's a WordPress rebuild for a local business, a performance audit, or a full-stack platform for a growing team, my process is always the same: understand the problem deeply, then execute cleanly.</p>
-          <p>I'm equally at home <strong>designing in Figma, building in Elementor, or debugging a Node.js API</strong>. I use AI tools like Claude, Cursor, and GitHub Copilot not to replace thinking, but to sharpen it. That combination makes me the person teams route their hardest problems to.</p>
-        </div>
-        <div class="workflow-row">
-          <span class="wp">Idea</span><span class="wp">Plan</span><span class="wp">AI Help</span><span class="wp">Code</span><span class="wp">Review</span><span class="wp">Test</span><span class="wp">Launch</span>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="traits-grid">
-          <div class="trait"><div class="trait-label">Focus</div><div class="trait-text">Prioritizing efficiency and objective logic in every challenge. I find the cleanest path to the right result — not just the fastest.</div></div>
-          <div class="trait"><div class="trait-label">Growth</div><div class="trait-text">An explorer of systems, driven by curiosity. I learn new tools faster than most because I understand the underlying patterns.</div></div>
-          <div class="trait"><div class="trait-label">Craft</div><div class="trait-text">Constant discipline to refine every aspect of my work. Details are where the difference between good and great lives.</div></div>
-          <div class="trait"><div class="trait-label">Collaboration</div><div class="trait-text">I've worked with marketing teams, account managers, QA engineers, and clients. I speak both technical and human — and adapt to whoever I'm in the room with.</div></div>
-        </div>
-        <div style="margin-top:1px;background:var(--surface2);border:1px solid var(--border);border-top:none;padding:1.25rem">
-          <div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">Education</div>
-          <div style="font-size:.9rem;color:var(--text);font-weight:500;margin-bottom:.2rem">BSc Computer Science — Palestine Technical University</div>
-          <div style="font-size:.8rem;color:var(--muted)">GPA 3.7 · Charlotte, NC</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="footer-marquee">
-  <div class="footer-track">
-    <span class="footer-item">Web Design<span> ✦ </span></span><span class="footer-item">WordPress<span> ✦ </span></span><span class="footer-item">Elementor<span> ✦ </span></span><span class="footer-item">SEO<span> ✦ </span></span><span class="footer-item">UI / UX<span> ✦ </span></span><span class="footer-item">Software Engineering<span> ✦ </span></span><span class="footer-item">Performance<span> ✦ </span></span><span class="footer-item">Web Design<span> ✦ </span></span><span class="footer-item">WordPress<span> ✦ </span></span><span class="footer-item">Elementor<span> ✦ </span></span><span class="footer-item">SEO<span> ✦ </span></span><span class="footer-item">UI / UX<span> ✦ </span></span><span class="footer-item">Software Engineering<span> ✦ </span></span><span class="footer-item">Performance<span> ✦ </span></span>
-  </div>
-</div>
-<div class="contact-section" id="contact">
-  <div class="contact-inner">
-    <p class="contact-eyebrow">Let's build something</p>
-    <h2 class="contact-headline">Ready to make your<br>website <em>work harder?</em></h2>
-    <p class="contact-desc">Whether it's a full rebuild, a performance fix, or a site that needs to rank — I'd love to talk about what you're building.</p>
-    <div class="contact-btns">
-      <a href="https://linkedin.com/in/layan2026" target="_blank" class="cbtn cbtn-p">Connect on LinkedIn</a>
-      <a href="https://github.com/layan-20" target="_blank" class="cbtn cbtn-o">View GitHub</a>
-    </div>
-  </div>
-</div>
+</section>
+
 <footer>
-  <span>© 2025 Layan Jabr</span>
-  <span>Designed & built by Layan Jabr — Charlotte, NC</span>
-  <span><a href="https://github.com/layan-20" target="_blank">github.com/layan-20</a></span>
+  © 2026 Layan — Built with intention
 </footer>
-<script>
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)}animRing();
-document.querySelectorAll('a,button,.project-header,.ba-container').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.width='52px';ring.style.height='52px'});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px'});
-});
-function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open')}
-function closeMobile(){document.getElementById('mobileMenu').classList.remove('open')}
-let lhDone=false;
-function toggleProject(id){
-  const el=document.getElementById(id);
-  const wasOpen=el.classList.contains('open');
-  document.querySelectorAll('.project-item').forEach(p=>p.classList.remove('open'));
-  if(!wasOpen){
-    el.classList.add('open');
-    if(id==='p2'&&!lhDone){lhDone=true;setTimeout(animLH,300)}
-    if(id==='p1'&&!el._slider){el._slider=true;initSlider()}
-    setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);
-  }
-}
-function animLH(){
-  const targets=[98,96,94,92];const circ=188.5;
-  targets.forEach((t,i)=>{
-    const r=document.getElementById('lr'+(i+1));
-    const n=document.getElementById('ln'+(i+1));
-    r.style.strokeDashoffset=circ-(t/100)*circ;
-    let c=0;const s=t/65;
-    const iv=setInterval(()=>{c=Math.min(c+s,t);n.textContent=Math.round(c);if(c>=t)clearInterval(iv)},16);
-  });
-}
-function initSlider(){
-  const c=document.getElementById('ba1'),h=document.getElementById('ba1h');
-  const after=c.querySelector('.ba-after-side');
-  let drag=false;
-  function set(x){const r=c.getBoundingClientRect();let p=Math.min(Math.max((x-r.left)/r.width,.05),.95);after.style.clipPath=`inset(0 ${(1-p)*100}% 0 0)`;h.style.left=(p*100)+'%'}
-  h.addEventListener('mousedown',e=>{drag=true;e.preventDefault()});
-  h.addEventListener('touchstart',()=>drag=true,{passive:true});
-  document.addEventListener('mousemove',e=>{if(drag)set(e.clientX)});
-  document.addEventListener('touchmove',e=>{if(drag)set(e.touches[0].clientX)},{passive:true});
-  document.addEventListener('mouseup',()=>drag=false);
-  document.addEventListener('touchend',()=>drag=false);
-}
-function switchTab3(e,id){
-  const d=e.target.closest('.project-detail');
-  d.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  d.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  e.target.classList.add('active');
-  d.querySelector('#'+id).classList.add('active');
-}
-const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
-(function(){
-  const canvas=document.getElementById('skillsCanvas');
-  if(!canvas||typeof THREE==='undefined')return;
-  const skills=['WordPress','Elementor','SEO','Figma','Adobe Suite','HTML5','CSS3','JavaScript','React','Node.js','GHL','WP Rocket','Lighthouse','Git','AWS','Docker','REST APIs','CI/CD','Canva','SQL','Claude AI','Copilot','Cursor','Yoast','Agile'];
-  const W=canvas.parentElement.offsetWidth||500;
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.setSize(W,W);renderer.setClearColor(0x000000,0);
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(60,1,0.1,1000);
-  camera.position.z=3.2;
-  const group=new THREE.Group();scene.add(group);
-  const keySkills=['WordPress','Elementor','SEO','React','Figma'];
-  skills.forEach((skill,i)=>{
-    const phi=Math.acos(-1+2*i/skills.length);
-    const theta=Math.sqrt(skills.length*Math.PI)*phi;
-    const r=1.55,x=r*Math.sin(phi)*Math.cos(theta),y=r*Math.sin(phi)*Math.sin(theta),z=r*Math.cos(phi);
-    const tc=document.createElement('canvas');tc.width=256;tc.height=64;
-    const ctx=tc.getContext('2d');
-    const isKey=keySkills.includes(skill);
-    ctx.font=isKey?'bold 26px sans-serif':'20px sans-serif';
-    ctx.fillStyle=isKey?'#c9a96e':'#888880';
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(skill,128,32);
-    const tex=new THREE.CanvasTexture(tc);
-    const mat=new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false});
-    const sprite=new THREE.Sprite(mat);
-    sprite.position.set(x,y,z);
-    sprite.scale.set(isKey?.88:.68,isKey?.22,.165,1);
-    group.add(sprite);
-  });
-  const sg=new THREE.SphereGeometry(1.45,24,24);
-  const sm=new THREE.MeshBasicMaterial({color:0x222222,wireframe:true,transparent:true,opacity:.12});
-  group.add(new THREE.Mesh(sg,sm));
-  let tRX=0,tRY=0,cRX=0,cRY=0,auto=true,t=0;
-  document.addEventListener('mousemove',e=>{
-    const rect=canvas.getBoundingClientRect();
-    const dx=(e.clientX-rect.left-rect.width/2)/rect.width;
-    const dy=(e.clientY-rect.top-rect.height/2)/rect.height;
-    if(Math.abs(dx)<.8&&Math.abs(dy)<.8){tRX=dy*.8;tRY=dx*.8;auto=false;setTimeout(()=>auto=true,2000)}
-  });
-  function animate(){
-    requestAnimationFrame(animate);t+=.005;
-    if(auto){tRY+=.003;tRX=Math.sin(t)*.12}
-    cRX+=(tRX-cRX)*.05;cRY+=(tRY-cRY)*.05;
-    group.rotation.x=cRX;group.rotation.y=cRY;
-    group.children.forEach(c=>{
-      if(c.material&&c.material.map){
-        const wp=new THREE.Vector3();c.getWorldPosition(wp);
-        c.material.opacity=THREE.MathUtils.mapLinear(wp.z,-1.6,1.6,.15,1);
-      }
-    });
-    renderer.render(scene,camera);
-  }animate();
-  window.addEventListener('resize',()=>{const nw=canvas.parentElement.offsetWidth||500;renderer.setSize(nw,nw)});
-})();
-</script>
+
 </body>
 </html>
